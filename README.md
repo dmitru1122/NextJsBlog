@@ -1,8 +1,10 @@
 ## How to use
 
 Install it and run:
-cd NextJsBlog
+
 ```bash
+cd NextJsBlog
+
 npm install
 npm run dev
 # or
