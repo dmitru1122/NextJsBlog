@@ -1,6 +1,5 @@
 import React from 'react';
 import { NextPage } from 'next';
-
 import { END } from 'redux-saga';
 import AllPost from '@/components/allPost';
 import { loadData } from '../actions';

@@ -1,21 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
 import { AppState } from '../interfaces';
 import PostTemplate from './post';
 
 interface PageProps {
   title: string;
 }
-
-// const selectData = useSelector(plas) createSelector(
-//   (state: AppState) => state.error,
-//   (state: AppState) => state.lastUpdate,
-//   (state: AppState) => state.light,
-//   (state: AppState) => state.placeholderData,
-//   (error, lastUpdate, light, placeholderData) => ({ error, lastUpdate, light, placeholderData }),
-// );
 
 const Page: React.FC<PageProps> = ({ title }: PageProps) => {
   // const { error, placeholderData } = useSelector(selectData);

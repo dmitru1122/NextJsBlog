@@ -1,13 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NextPage } from 'next';
 import { AppState } from '../interfaces';
 import Post from './post';
-
-// interface PageProps {
-// title: string
-
-// }
 
 const LatestPost: React.FC = () => {
   const selectPosts = (state: AppState) => state.placeholderData;

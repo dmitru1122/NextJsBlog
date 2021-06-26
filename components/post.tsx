@@ -29,8 +29,6 @@ const A = styled.a`
 `;
 
 const PostTemplate = ({ title, children }: PageProps): JSX.Element => {
-  // const title  = title;
-  // const const dispatch = useDispatch()
   return (
     <>
       <Head>
