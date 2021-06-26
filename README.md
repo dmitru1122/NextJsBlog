@@ -3,6 +3,8 @@
 Install it and run:
 
 ```bash
+cd NextJsBlog
+
 npm install
 npm run dev
 # or
