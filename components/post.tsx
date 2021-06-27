@@ -2,14 +2,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-// let childrenType: ReactChild | ReactFragment | ReactPortal | boolean | null | undefined;
-
 interface PageProps {
   title: string;
   children: JSX.Element;
 }
 const Header = styled.header`
   color: black;
+
   background-color: #f5f2e1;
   display: flex;
   width: 100%;

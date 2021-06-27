@@ -26,15 +26,13 @@ interface Form {
 
 function* sendDataSaga(form: Form): any {
   try {
-    const { status } = yield axios.post<{ message: string; data: any }>(
+    const { status } = yield axios.post<{ message: string; data: Form }>(
       `https://simple-blog-api.crew.red/posts`,
       form.data,
     );
     if (status === 201) {
       yield put(sendDataSuccess(true));
     }
-    // yield put(loadDataSuccess(data));
-    // added method for show on client success requests
   } catch (error) {
     yield put(sendDataSuccess(false));
   }
