@@ -17,4 +17,8 @@ export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
   await store.sagaTask?.toPromise();
 });
 
+// export function getServerSideProps() {
+//   const reduxStore = initializeStore();
+// }
+
 export default Index;

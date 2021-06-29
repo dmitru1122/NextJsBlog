@@ -9,5 +9,5 @@ export interface AppState {
   lastUpdate: number;
   light: boolean;
   placeholderData: IPost[] | null;
-  sendDataSuccess: boolean;
+  sendDataSuccess: boolean | null;
 }

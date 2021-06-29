@@ -13,7 +13,7 @@ yarn dev
 ```
 
 problems:
-1 Too slow loading SSR. I have two ideas what is the reason: 1.1 My pc is slow. 1.2 Reoloading all redux store with wrapper.getStaticProps.
+1 Too slow SSR loading. I have two ideas what is the reason: 1.1 My pc is slow. 1.2 Reoloading all redux store with wrapper.getStaticProps.
 
 2 Design. I hope it isn't important)
 

@@ -34,5 +34,5 @@ export interface SendData {
 
 export interface SendDataSuccess {
   type: actionTypes.SEND_DATA_SUCCESS;
-  data: boolean;
+  data: boolean | null;
 }

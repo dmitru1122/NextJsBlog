@@ -26,7 +26,7 @@ export function sendData(data: IPost): actionIs.SendData {
   };
 }
 
-export function sendDataSuccess(data: boolean): actionIs.SendDataSuccess {
+export function sendDataSuccess(data: boolean | null): actionIs.SendDataSuccess {
   return {
     type: actionTypes.SEND_DATA_SUCCESS,
     data,

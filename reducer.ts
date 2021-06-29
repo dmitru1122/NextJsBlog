@@ -6,7 +6,7 @@ export const exampleInitialState: AppState = {
   lastUpdate: 0,
   light: false,
   placeholderData: null,
-  sendDataSuccess: false,
+  sendDataSuccess: null,
 };
 
 const reducer = (

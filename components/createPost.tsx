@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { sendData, sendDataSuccess } from '@/actions/index';
+import Spinner from '@/components/loadinрSpinner';
 import styled from 'styled-components';
+import { AppState } from '@/interfaces';
 
 const Button = styled.button`
   color: palevioletred;
@@ -48,8 +50,24 @@ const TextArea = styled.textarea`
   font-weight: 700;
 `;
 
+const RequestStatusTemplate = styled.section`
+  position: fixed;
+  top: 20%;
+  background-color: black;
+  padding: 30px;
+  border-radius: 10px;
+  opacity: 0.6;
+  color: white;
+  font-size: 24px;
+`;
+
 const AddPost: React.FC = () => {
-  const [form, setForm] = useState({ title: '', body: '' });
+  const initialStateForm = { title: '', body: '' };
+  const [form, setForm] = useState(initialStateForm);
+  const selectRequestStatus = (state: AppState) => state.sendDataSuccess;
+  const sendDataStatus = useSelector(selectRequestStatus);
+  const [isShowReequstData, setIsShowReequstData] = useState(false);
+  const [isShowResponse, setIsShowResponse] = useState(false);
   const dispatch = useDispatch();
 
   const handleChange = (e: any) => {
@@ -57,28 +75,55 @@ const AddPost: React.FC = () => {
     setForm({ ...form, [name]: e.target.value });
   };
 
-  const sendForm = () => {
+  const sendForm = (event: any) => {
+    event.preventDefault();
+    setIsShowResponse(true);
     sendDataSuccess(false);
     dispatch(sendData(form));
   };
 
+  useEffect(() => {
+    if (!isShowResponse) return;
+    const changeShow = () => {
+      setIsShowResponse(false);
+      dispatch(sendDataSuccess(null));
+      setForm({ title: '', body: '' });
+    };
+    setIsShowReequstData(true);
+    setTimeout(changeShow, 3000);
+  }, [sendDataStatus]);
+
   return (
     <>
-      <Form>
-        <Input
-          type="text"
+      <Form onSubmit={sendForm}>
+        <TextArea
           value={form.title}
           name="title"
           placeholder="Input Title"
           onChange={handleChange}
+          required={true}
         />
         <TextArea
           value={form.body}
           name="body"
           placeholder="Input description"
           onChange={handleChange}
+          required={true}
         />
-        <Button type="button" value="send" placeholder="send" onClick={sendForm} />
+        <Button type="submit" value="send" placeholder="send" />
+        {isShowResponse ? (
+          <>
+            {isShowReequstData ? (
+              <RequestStatusTemplate>
+                {sendDataStatus ? <div>congrats</div> : <div>Error! check input data</div>}
+              </RequestStatusTemplate>
+            ) : (
+              <Spinner />
+            )}
+          </>
+        ) : (
+          <></>
+        )}
       </Form>
     </>
   );
