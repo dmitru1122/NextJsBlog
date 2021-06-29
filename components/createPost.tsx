@@ -115,7 +115,11 @@ const AddPost: React.FC = () => {
           <>
             {isShowReequstData ? (
               <RequestStatusTemplate>
-                {sendDataStatus ? <div>congrats</div> : <div>Error! check input data</div>}
+                {sendDataStatus ? (
+                  <div>CONGRATS</div>
+                ) : (
+                  <div>Error: The network connection was lost</div>
+                )}
               </RequestStatusTemplate>
             ) : (
               <Spinner />
